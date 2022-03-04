@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import AllBobaShopsPage from "./pages/AllBobaShopsPage";
+import NewBobaShopPage from "./pages/NewBobaShopPage";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<AllBobaShopsPage />} />
+        <Route path="newbobashop" element={<NewBobaShopPage />} />
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
+      </Routes>
+    </>
   );
 }
 
