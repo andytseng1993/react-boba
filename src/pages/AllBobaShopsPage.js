@@ -1,4 +1,4 @@
-
+import BobaShopList from "../component/shops/BobaShopList";
 
 const DUMMY_DATA = [
   {
@@ -26,11 +26,7 @@ function AllBobaShopsPage() {
   return (
     <section>
       <h1>All Boba Shops</h1>
-      <ul>
-        {DUMMY_DATA.map((bobashop) => {
-          return <li key={bobashop.shopName}>{bobashop.shopName}</li>;
-        })}
-      </ul>
+      <BobaShopList shops={ DUMMY_DATA}/>
     </section>
   );
 }

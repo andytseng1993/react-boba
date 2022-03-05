@@ -3,8 +3,8 @@ import classes from "./BobaShopList.module.css";
 
 function BobaShopList(props) {
   return (
-    <ul>
-      {props.shops.map((shop) => {
+    <ul className={classes.list}>
+      {props.shops.map((shop) => (
         <BobaShop
           key={shop.id}
           id={shop.id}
@@ -13,8 +13,8 @@ function BobaShopList(props) {
           bobaTeaName={shop.bobaTeaName}
           address={shop.address}
           description={shop.description}
-        />;
-      })}
+        />
+      ))}
     </ul>
   );
 }
