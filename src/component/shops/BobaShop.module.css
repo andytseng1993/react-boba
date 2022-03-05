@@ -1,3 +1,74 @@
-.shop{
-    width: 70%;    
+.shop {
+    margin: 1rem 0;
+}
+.image {
+  width: 35%;
+  height: 100%;
+  padding: 0 1.5rem 0 0;
+}
+.image img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.content {
+  position: relative;
+  border: 2px solid rgb(232, 232, 232);
+  border-radius: 10px;
+  padding: 0.8rem;
+  margin-left: 1rem;
+}
+.content::before {
+  position: absolute;
+  content: "";
+  height: 2rem;
+  width: 1.5rem;
+  top: 50%;
+  left: -1.5rem;
+  background-color: rgb(235, 235, 235);
+  transform: translateY(-50%);
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+}
+.shopTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.shopName {
+  font-size: 1.5rem;
+  margin: 0.6rem 0;
+}
+.action {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+  color: rgb(215, 215, 215);
+  cursor: pointer;
+  user-select: none;
+  transition: color .2s ease;
+}
+.action:hover {
+  color: rgb(255, 92, 42);
+}
+.action:active {
+  transform: translate(1px, 1px);
+}
+.bobaTeaName {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding-bottom: 0.4rem;
+}
+.address {
+  font-size: 1rem;
+  padding: 0.4rem 0;
+}
+.addressIcon {
+  padding-right: 0.4rem;
+}
+.description {
+  margin: 0.4rem 0.4rem;
+  font-size: 0.95rem;
+  color: #444;
+  
+  line-height: 1.2rem;
 }

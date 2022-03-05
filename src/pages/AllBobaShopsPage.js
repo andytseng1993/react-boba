@@ -6,7 +6,7 @@ const DUMMY_DATA = [
     shopName: "This is a first meetup",
     bobaTeaName: "Boba MIlk Tea",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg",
+      "https://images.unsplash.com/photo-1615963244664-5b845b2025ee?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
     address: "Meetupstreet 5, 12345 Meetup City",
     description:
       "This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!",
