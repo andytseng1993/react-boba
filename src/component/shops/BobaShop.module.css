@@ -1,6 +1,12 @@
 .shop {
     margin: 1rem 0;
 }
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
 .image {
   width: 35%;
   height: 100%;
