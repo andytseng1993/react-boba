@@ -2,7 +2,6 @@ import axios from "axios";
 import BobaShopList from "../component/shops/BobaShopList";
 import { useEffect, useState } from "react";
 
-
 function AllBobaShopsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedShops, setLoadedShops] = useState([]);
@@ -12,13 +11,14 @@ function AllBobaShopsPage() {
     axios
       .get(`${process.env.REACT_APP_FIREBASEAPI_URL}`)
       .then((res) => {
-        const bobashops = []
-        for (let key in res.data){
-          const bobashop ={
-            id:key,
-            ...res.data[key]
-          }
-          bobashops.push(bobashop)
+        console.log(res)
+        const bobashops = [];
+        for (let key in res.data) {
+          const bobashop = {
+            id: key,
+            ...res.data[key],
+          };
+          bobashops.push(bobashop);
         }
         setLoadedShops(bobashops);
         setIsLoading(false);
@@ -26,14 +26,14 @@ function AllBobaShopsPage() {
       .catch((err) => console.log(err));
   }, []);
 
-if(isLoading){
-  return (
-    <section>
-      <h1>All Boba Shops</h1>
-      <p>Loading...</p>
-    </section>
-  );
-}
+  if (isLoading) {
+    return (
+      <section>
+        <h1>All Boba Shops</h1>
+        <p>Loading...</p>
+      </section>
+    );
+  }
 
   return (
     <section>

@@ -1,5 +1,5 @@
 .shop {
-    margin: 1rem 0;
+    margin: 2rem 0;
 }
 .row{
     display: flex;
@@ -23,6 +23,7 @@
   border-radius: 10px;
   padding: 0.8rem;
   margin-left: 1rem;
+  width: 100%;
 }
 .content::before {
   position: absolute;
