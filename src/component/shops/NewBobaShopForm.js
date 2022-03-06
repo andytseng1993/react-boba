@@ -2,7 +2,7 @@ import classes from "./NewBobaShopForm.module.css";
 import Card from "../ui/Card";
 import { useRef } from "react";
 
-function NewBobaShopForm() {
+function NewBobaShopForm(props) {
   const shopNameRef = useRef();
   const bobaTeaNameRef = useRef();
   const imageRef = useRef();
@@ -25,6 +25,8 @@ function NewBobaShopForm() {
       description: inputedDescription,
       favorite: 0,
     };
+
+    props.onAddShop(shopsData)
   }
   return (
     <Card>
