@@ -7,7 +7,7 @@ function NewBobaShopPage() {
   function handleAddShop(shopsData) {
     axios
       .post(
-        `${process.env.REACT_APP_FIREBASEAPI_URL}/bobashops.json`,
+        `${process.env.REACT_APP_FIREBASEAPI_URL}`,
         shopsData
       )
       .then(() => {
