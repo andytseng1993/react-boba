@@ -1,38 +1,55 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
+import classes from "./BobaDescription.module.css";
 
 function BobaDescription(props) {
-  const [description, setDescription] = useState(props.description);
-  const [isTooLong, setIsTooLong] = useState(false);
-  const [lessDescription, setLessDescription] = useState(true);
-  function moreHandler() {
-    setLessDescription(false);
-    setDescription(props.description);
-  }
-  function lessHandler() {
-    setDescription(description.slice(0, 295).concat("..."));
-    setLessDescription(true);
-  }
-  useEffect(() => {
-    if (description.length > 295) {
-      setIsTooLong(true);
-      setDescription(description.slice(0, 295).concat("..."));
-    } else return;
-  }, []);
+    const [description, setDescription] = useState(props.description);
+    const isTooLong = useRef(false);
+    const lessDescription = useRef(true);
 
-  return (
-    <div>
-      <p>&ldquo;{description}&rdquo;</p>
-      {isTooLong ? (
-        lessDescription ? (
-          <button onClick={moreHandler}>more</button>
-        ) : (
-          <button onClick={lessHandler}>less</button>
-        )
-      ) : (
-        ""
-      )}
-    </div>
-  );
+    function shortDep(description) {
+        return description.split(" ").slice(0, 50).join(" ");
+    }
+    function moreHandler() {
+        lessDescription.current =false;
+        setDescription(props.description);
+    }
+    function lessHandler() {
+        setDescription(shortDep(description) + "...");
+        lessDescription.current =true;
+    }
+    useEffect(() => {
+        if (description.length > 295) {
+            isTooLong.current=true;
+            setDescription(shortDep(description) + "...");
+        } else return;
+    }, []);
+
+    return (
+        <div className={classes.content}>
+            <p
+                className={
+                    isTooLong.current ? classes.longDescription : classes.description
+                }
+            >
+                &ldquo;{description}&rdquo;
+            </p>
+            {isTooLong.current ? (
+                lessDescription.current ? (
+                    <button className={classes.action} onClick={moreHandler}>
+                        Read more
+                        <span className={classes.more} />
+                    </button>
+                ) : (
+                    <button className={classes.action} onClick={lessHandler}>
+                        <span className={classes.less} />
+                        Read less
+                    </button>
+                )
+            ) : (
+                ""
+            )}
+        </div>
+    );
 }
 
 export default BobaDescription;

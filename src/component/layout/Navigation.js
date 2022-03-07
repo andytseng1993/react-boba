@@ -4,7 +4,7 @@ import classes from "./Navigation.module.css";
 function Navigation() {
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>Boba Milk Shop</div>
+      <div className={classes.logo}>Best Boba Milk Tea</div>
       <nav>
         <NavLink
           style={({ isActive }) =>
