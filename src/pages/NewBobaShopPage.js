@@ -4,14 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 function NewBobaShopPage() {
   const navigate = useNavigate();
+
   function handleAddShop(shopsData) {
     axios
-      .post(
-        `${process.env.REACT_APP_FIREBASEAPI_URL}`,
-        shopsData
-      )
+      .post(`${process.env.REACT_APP_FIREBASEAPI_URL}`, shopsData)
       .then(() => {
-        navigate('/');
+        navigate("/");
       })
       .catch((err) => {
         alert(err);

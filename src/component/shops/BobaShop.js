@@ -9,6 +9,7 @@ import axios from "axios";
 function BobaShop(props) {
   const [favoriteNumber, setfavoriteNumber] = useState(props.favorite);
   const shopChange = { ...props };
+  
   function favoriteNum(count) {
     shopChange.favorite = count + 1;
     setfavoriteNumber((prev) => prev + 1);
