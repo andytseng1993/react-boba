@@ -1,5 +1,5 @@
 .shop {
-    margin: 2rem 0;
+    margin: 0 0 3rem 0;
 }
 .row{
     display: flex;
@@ -14,7 +14,8 @@
 }
 .image img {
   width: 100%;
-  object-fit: cover;
+  max-height: 12rem;
+  object-fit: contain;
   border-radius: 10px;
 }
 .content {
@@ -24,6 +25,7 @@
   padding: 0.8rem;
   margin-left: 1rem;
   width: 100%;
+  transition: height 3s ease;
 }
 .content::before {
   position: absolute;
@@ -37,29 +39,45 @@
   clip-path: polygon(0 50%, 100% 0, 100% 100%);
 }
 .shopTitle {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
 }
 .shopName {
-  font-size: 1.5rem;
-  margin: 0.6rem 0;
+  display: inline-block;
+  max-width: 23rem;
+  font-size: 1.6rem;
+  margin: 0 0 0.4rem 0;
 }
 .action {
   font-size: 2rem;
-  margin-right: 0.5rem;
-  color: rgb(215, 215, 215);
+  color: rgb(255, 8, 8);
   cursor: pointer;
   user-select: none;
   transition: color .2s ease;
 }
 .action:hover {
-  color: rgb(255, 92, 42);
+  color: rgb(208, 56, 9);
+  transform: translateY(-1px);
 }
 .action:active {
   transform: translate(1px, 1px);
 }
+.favorite{
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+.favoriteNumber{
+  margin-top: .2rem;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
 .bobaTeaName {
   font-size: 1.2rem;
   font-weight: 600;

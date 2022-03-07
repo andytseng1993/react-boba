@@ -11,7 +11,6 @@ function AllBobaShopsPage() {
     axios
       .get(`${process.env.REACT_APP_FIREBASEAPI_URL}`)
       .then((res) => {
-        console.log(res)
         const bobashops = [];
         for (let key in res.data) {
           const bobashop = {

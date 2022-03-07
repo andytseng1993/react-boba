@@ -13,6 +13,7 @@ function BobaShopList(props) {
           bobaTeaName={shop.bobaTeaName}
           address={shop.address}
           description={shop.description}
+          favorite = {shop.favorite}
         />
       ))}
     </ul>

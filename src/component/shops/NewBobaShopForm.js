@@ -23,7 +23,7 @@ function NewBobaShopForm(props) {
       image: inputedImage,
       address: inputedAddress,
       description: inputedDescription,
-      favorite: 0,
+      favorite: 1,
     };
 
     props.onAddShop(shopsData)
