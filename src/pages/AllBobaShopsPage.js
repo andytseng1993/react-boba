@@ -1,6 +1,7 @@
 import axios from "axios";
 import BobaShopList from "../component/shops/BobaShopList";
 import { useEffect, useState } from "react";
+import { PopularBobaShopProvider } from "../component/store/popularbobashop";
 
 function AllBobaShopsPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -9,7 +10,7 @@ function AllBobaShopsPage() {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${process.env.REACT_APP_FIREBASEAPI_URL}`)
+      .get(`${process.env.REACT_APP_FIREBASEAPI_URL}.json`)
       .then((res) => {
         const bobashops = [];
         for (let key in res.data) {
@@ -36,8 +37,10 @@ function AllBobaShopsPage() {
 
   return (
     <section>
-      <h1>All Boba Shops</h1>
-      <BobaShopList shops={loadedShops} />
+      <PopularBobaShopProvider>
+        <h1 style={{textAlign:'center'}}>All Boba Shops</h1>
+        <BobaShopList shops={loadedShops} />
+      </PopularBobaShopProvider>
     </section>
   );
 }

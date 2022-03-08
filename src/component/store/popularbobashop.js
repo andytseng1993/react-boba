@@ -5,7 +5,7 @@ const PopularBobaShop = createContext({
   maxFavorite: 0,
   addFavoriteShopHandler: (favoriteShop) => {},
   findMaxFavoriteNumberHandler: (number) => {},
-  isMaxFavoriteShopHandler: (shopId) =>{}
+  isMaxFavoriteShopHandler: (shopId) => {},
 });
 
 export default PopularBobaShop;
@@ -14,28 +14,31 @@ export function PopularBobaShopProvider(props) {
   const [userFavoritesMax, setUserFavoritesMax] = useState(0);
   const [favoriteShop, setFavoriteShop] = useState({});
 
-  function addFavoriteShopHandler(favoriteShop) {
+  function addFavoriteShopHandler(ShopIdfavorite) {
+
     setFavoriteShop((preFavorites) => {
-      return preFavorites.assign(favoriteShop);
+      return Object.assign(preFavorites, ShopIdfavorite);
     });
   }
   function findMaxFavoriteNumberHandler(number) {
-    setUserFavoritesMax((prevousNumber) => {
-      return Math.max(prevousNumber, number);
-    });
+    if (userFavoritesMax < number) {
+      setUserFavoritesMax((prevousNumber) => {
+        return Math.max(prevousNumber, number);
+      });
+    }
   }
   function isMaxFavoriteShopHandler(shopId) {
     const maxFavoriteShop = Object.keys(favoriteShop).filter(
       (key) => favoriteShop[key] === userFavoritesMax
     );
-    return maxFavoriteShop.includes(shopId)
+    return maxFavoriteShop.includes(shopId);
   }
 
   const context = {
     favoriteShop: favoriteShop,
     maxFavorite: userFavoritesMax,
-    addFavoriteShop: addFavoriteShopHandler,
-    findMaxFavoriteNumber: findMaxFavoriteNumberHandler,
+    addFavoriteShopHandler: addFavoriteShopHandler,
+    findMaxFavoriteNumberHandler: findMaxFavoriteNumberHandler,
     isMaxFavoriteShopHandler: isMaxFavoriteShopHandler,
   };
 

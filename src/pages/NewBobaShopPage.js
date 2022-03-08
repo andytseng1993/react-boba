@@ -7,7 +7,7 @@ function NewBobaShopPage() {
 
   function handleAddShop(shopsData) {
     axios
-      .post(`${process.env.REACT_APP_FIREBASEAPI_URL}`, shopsData)
+      .post(`${process.env.REACT_APP_FIREBASEAPI_URL}.json`, shopsData)
       .then(() => {
         navigate("/"); 
       })
@@ -18,7 +18,7 @@ function NewBobaShopPage() {
 
   return (
     <section>
-      <h1>Add New Boba Shop</h1>
+      <h1 style={{textAlign:'center'}}>Add New Boba Shop</h1>
       <section>
         <NewBobaShopForm onAddShop={handleAddShop} />
       </section>

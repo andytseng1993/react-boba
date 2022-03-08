@@ -1,35 +1,55 @@
 import classes from "./BobaShop.module.css";
 import Card from "../ui/Card";
 import BobaDescription from "./BobaDescription";
-import { faHeart, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import {faHeart,faLocationDot,faCrown} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
+import PopularBobaShop from "../store/popularbobashop";
 
 function BobaShop(props) {
   const [favoriteNumber, setfavoriteNumber] = useState(props.favorite);
   const shopChange = { ...props };
-  
+  const PopularBobaShopContext = useContext(PopularBobaShop);
+  const isMaxFavorite=PopularBobaShopContext.isMaxFavoriteShopHandler(props.id)
+
+  useEffect(() => {
+    PopularBobaShopContext.addFavoriteShopHandler({
+      [props.id]: favoriteNumber,
+    });
+    PopularBobaShopContext.findMaxFavoriteNumberHandler(favoriteNumber);
+  }, []);
+
   function favoriteNum(count) {
     shopChange.favorite = count + 1;
     setfavoriteNumber((prev) => prev + 1);
+    PopularBobaShopContext.addFavoriteShopHandler({
+      [props.id]: shopChange.favorite,
+    });
+    PopularBobaShopContext.findMaxFavoriteNumberHandler(shopChange.favorite);
+   
     axios
       .put(
-        `https://react-boba-shop-default-rtdb.firebaseio.com/bobashops/${props.id}.json`,
+        `${process.env.REACT_APP_FIREBASEAPI_URL}/${props.id}.json`,
         shopChange
       )
-      .then((res) => {
-        console.log(res);
-      })
       .catch((err) => {
         console.log(err);
       });
   }
+  
 
   return (
     <li className={classes.shop}>
       <Card>
         <div className={classes.row}>
+          {isMaxFavorite? (
+            <div className={classes.crown}>
+              <FontAwesomeIcon icon={faCrown} />
+            </div>
+          ) : (
+            ""
+          )}
           <div className={classes.image}>
             <img src={props.image} alt={props.shopName} />
           </div>
@@ -53,7 +73,7 @@ function BobaShop(props) {
               />
               {props.address}
             </address>
-            <BobaDescription description={props.description}/>
+            <BobaDescription description={props.description} />
           </div>
         </div>
       </Card>
