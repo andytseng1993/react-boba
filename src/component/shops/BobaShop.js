@@ -18,6 +18,7 @@ function BobaShop(props) {
       [props.id]: favoriteNumber,
     });
     PopularBobaShopContext.findMaxFavoriteNumberHandler(favoriteNumber);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function favoriteNum(count) {
