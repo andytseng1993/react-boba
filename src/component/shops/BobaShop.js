@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import PopularBobaShop from "../store/popularbobashop";
+import BobaShopInfo from "./BobaShopInfo";
 
 function BobaShop(props) {
   const [favoriteNumber, setfavoriteNumber] = useState(props.favorite);
@@ -77,6 +78,7 @@ function BobaShop(props) {
             <BobaDescription description={props.description} />
           </div>
         </div>
+        <BobaShopInfo id={props.id}/>
       </Card>
     </li>
   );
