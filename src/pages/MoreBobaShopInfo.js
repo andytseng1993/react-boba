@@ -19,7 +19,10 @@ function MoreBobaShopInfo() {
         `${process.env.REACT_APP_FIREBASEAPI_URL}/${shopData.id}.json`,
         shopData
       )
-      .then(()=> getData())
+      .then(()=> {
+        getData()
+        alert('Add a review :)')
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -38,14 +41,14 @@ function MoreBobaShopInfo() {
   if (isLoading) {
     return (
       <section>
-        <h1>More Information</h1>
+        <h1 style={{textAlign:'center'}}>More Information</h1>
         <p>Loading...</p>
       </section>
     );
   }
   return (
     <section>
-      <h1>More Information</h1>
+      <h1 style={{textAlign:'center'}}>More Information</h1>
       <BobaShopInfo
         id={params.shopId}
         image={loadedInfo.image}
