@@ -1,0 +1,202 @@
+@media only screen and (min-width: 1400px) and (min-height:650px){
+.drink{
+    position:fixed;
+    bottom: 0em;
+    transform: rotate(10deg);
+    left: 0em;
+  }
+  .straw{
+    z-index: 15;
+    top: -4.5em;
+    left: 12em;
+    position: absolute;
+    height: 10em;
+    width: 2.5em;
+    background-color: #353535;
+    transform: rotate(15deg);
+    border-radius:56% 39% 100% 0% / 0% 0% 14% 10% ;
+  }
+  .straw::before{
+    position: absolute;
+    content: '';
+    top: -0.5em;
+    width: 2.5em;
+    height: 1em;
+    background-color: black;
+    border-radius: 50%;
+  }
+  .top{
+    position: relative;
+    top: 2em;
+    width:16em;
+    height: 4em;
+    background-color: rgb(255 227 189);
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: inset rgb(255 227 189) 0px -3px 4px 0px;
+    border-bottom: rgb(244 181 95) 7px solid;
+  }
+  .cup{
+    position: relative;
+    width: 12em;
+    height: 0em;
+    border-top: solid rgb(246 217 156) 25em;
+    border-left: solid transparent 2em;
+    border-right: solid transparent 2em;
+    z-index: 1;
+  }
+  .bottom{
+    position: relative;
+    top: -1.5em;
+    left: 2em;
+    width: 12em;
+    height: 3em;
+    border-radius: 50%;
+    background-color: rgb(246 217 156);
+    z-index:-1;
+  }
+  .brownsugar1{
+    position: relative;
+    top: -10em;
+    width:10em;
+    height: 7em;
+    background-image:linear-gradient( to bottom,rgb(200 118 61) 0%,rgba(246,217 ,156, 0.4) 50%, rgb(246 217 156));
+    border-radius:29% 71% 19% 81% / 69% 51% 49% 31% ;
+    filter: blur(1px);
+  }
+  .brownsugar2{
+    position: absolute;
+    top: -10em;
+    left: 6em;
+    width:6em;
+    height: 7em;
+    background-image:linear-gradient( to bottom, rgb(146 60 0 / 70%) 0%,rgb(201 111 48/ 50%) 20%, rgb(255 255 255 / 0%));
+    border-radius: 89% 54% 63% 63% / 73% 61% 84% 50% ;
+    filter: blur(2px);
+  }
+  .brownsugar3{
+    position: absolute;
+      top: -6em;
+      left: 0.2em;
+      width: 11.5em;
+      height: 7em;
+      background-image: linear-gradient( 0deg, rgba(154, 67, 6,0.7), rgba(246,217 ,156, 0));
+      border-radius: 61% 57% 74% 81% / 50% 52% 47% 40%;
+    filter: blur(4px);
+  }
+  .milktea{
+    position: absolute;
+      top: -11em;
+      left: 3em;
+      width: 1em;
+      height: 10em;
+      background-image: linear-gradient( 180deg, rgb(246 217 156), rgba(246 217 156/10%));
+      border-radius: 61% 57% 74% 81% / 50% 52% 47% 40%;
+      filter: blur(3.5px);
+  }
+  .milktea2{
+    position: absolute;
+      top: -13em;
+      left: 6em;
+      width: 1.5em;
+      height: 10em;
+      background-image: linear-gradient( 180deg, rgb(246 217 156) 0%,rgb(246 217 156) 20%, rgba(246 217 156/0%));
+      border-radius: 61% 57% 74% 81% / 50% 52% 47% 40%;
+      filter: blur(3px);
+  }
+  .milktea3{
+    position: absolute;
+      top: -11em;
+      left: 10.5em;
+      width: 1.5em;
+      height: 10em;
+      background-image: linear-gradient( 180deg, rgb(246 217 156) 0%,rgb(246 217 156) 20%, rgba(246 217 156/0%));
+      border-radius: 61% 57% 74% 81% / 50% 52% 47% 40%;
+      filter: blur(2px);
+  }
+  .milktea4{
+    position: absolute;
+      top: -14em;
+      left: 10.5em;
+      width: 1em;
+      height: 10em;
+      background-image: linear-gradient( 180deg, rgb(246 217 156) 0%,rgb(246 217 156) 20%, rgba(246 217 156/0%));
+      border-radius: 61% 57% 74% 81% / 50% 52% 47% 40%;
+      filter: blur(2px);
+  }
+  
+  .boba{
+    position: absolute;
+    top: -4em;
+    left: .5em;
+    width: 2em;
+    height: 2em;
+    background-color: black;
+    border-radius:33% 67% 57% 43% / 65% 46% 54% 35%;
+    transform: rotate(calc(10deg*var(--i)));
+  }
+  
+  .boba:nth-child(2){
+    left: 1.5em;
+    top: -1.5em;
+  }
+  .boba:nth-child(3){
+    left: 9em;
+    top: -1.3em;
+  }
+  .boba:nth-child(4){
+    left: 3em;
+    top: -3em;
+  }
+  .boba:nth-child(5){
+    left: 4em;
+    top: -1.2em;
+  }
+  .boba:nth-child(6){
+    left: 6.5em;
+    top: -3.5em;
+  }
+  
+  .boba:nth-child(7){
+    left: 5em;
+    top: -5em;
+  }
+  .boba:nth-child(8){
+    left: 10em;
+    top: -3.5em;
+  }
+  .boba:nth-child(9){
+    left: 2em;
+    top: -6em;
+  }
+  .boba:nth-child(10){
+    left: 6em;
+    top: -1.5em;
+  }
+  .boba:nth-child(11){
+    left: 10em;
+    top: -6em;
+  }
+  
+  .ice{
+    position: absolute;
+    width: 3em;
+    height: 3em;
+    background-color:rgb(246 217 156);
+    z-index: -1;
+  }
+  .ice:nth-child(1){
+    top: 5em;
+    left: 3em;
+    background-color: rgb(246, 220, 181);
+    border-radius:67% 72% 59% 72% / 23% 52% 23% 34% ;
+    box-shadow: inset -7px -4px 0px rgb(255 243 231);
+  }
+  .ice:nth-child(2){
+    left: 10em;
+    top: 5em;
+    border-radius:19% 95% 70% 57% / 90% 18% 11% 100% ;
+    box-shadow: inset 2px 10px 0px rgb(255 243 231), 6px 2px 0px rgb(255 243 231);
+  }
+  
+}
