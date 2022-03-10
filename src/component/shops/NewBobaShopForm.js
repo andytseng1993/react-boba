@@ -11,18 +11,20 @@ function NewBobaShopForm(props) {
 
   function submitHandler(event) {
     event.preventDefault();
-    const inputedShopName = shopNameRef.current.value;
-    const inputedBobaTeaName = bobaTeaNameRef.current.value;
-    const inputedImage = imageRef.current.value;
-    const inputedAddress = shopAddressRef.current.value;
-    const inputedDescription = descriptionRef.current.value;
+    const inputedShopName = shopNameRef.current.value.trim();
+    const inputedBobaTeaName = bobaTeaNameRef.current.value.trim();
+    const inputedImage = imageRef.current.value.trim();
+    const inputedAddress = shopAddressRef.current.value.trim();
+    const inputedDescription = descriptionRef.current.value.trim();
+    let arrayDescription = []
+    arrayDescription.push(inputedDescription)
 
     const shopsData = {
       shopName: inputedShopName,
       bobaTeaName: inputedBobaTeaName,
       image: inputedImage,
       address: inputedAddress,
-      description: inputedDescription,
+      description: arrayDescription,
       favorite: 1,
     };
 

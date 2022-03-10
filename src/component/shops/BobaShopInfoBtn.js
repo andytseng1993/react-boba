@@ -1,7 +1,7 @@
 import { Link,Outlet } from "react-router-dom";
 
 
-function BobaShopInfo(props){
+function BobaShopInfoBtn(props){
     return(
         <button> 
             <Link
@@ -17,4 +17,4 @@ function BobaShopInfo(props){
 }
 
 
-export default BobaShopInfo;
+export default BobaShopInfoBtn;
