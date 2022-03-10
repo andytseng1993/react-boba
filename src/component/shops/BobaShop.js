@@ -1,7 +1,11 @@
 import classes from "./BobaShop.module.css";
 import Card from "../ui/Card";
 import BobaDescription from "./BobaDescription";
-import {faHeart,faLocationDot,faCrown} from "@fortawesome/free-solid-svg-icons";
+import {
+  faHeart,
+  faLocationDot,
+  faCrown,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useContext, useEffect } from "react";
 import axios from "axios";
@@ -12,14 +16,19 @@ function BobaShop(props) {
   const [favoriteNumber, setfavoriteNumber] = useState(props.favorite);
   const shopChange = { ...props };
   const PopularBobaShopContext = useContext(PopularBobaShop);
-  const isMaxFavorite=PopularBobaShopContext.isMaxFavoriteShopHandler(props.id)
+  const isMaxFavorite = PopularBobaShopContext.isMaxFavoriteShopHandler(
+    props.id
+  );
+  let address = `https://maps.google.com/?q=${encodeURIComponent(
+    props.address
+  )}`;
 
   useEffect(() => {
     PopularBobaShopContext.addFavoriteShopHandler({
       [props.id]: favoriteNumber,
     });
     PopularBobaShopContext.findMaxFavoriteNumberHandler(favoriteNumber);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function favoriteNum(count) {
@@ -29,7 +38,7 @@ function BobaShop(props) {
       [props.id]: shopChange.favorite,
     });
     PopularBobaShopContext.findMaxFavoriteNumberHandler(shopChange.favorite);
-   
+
     axios
       .put(
         `${process.env.REACT_APP_FIREBASEAPI_URL}/${props.id}.json`,
@@ -39,13 +48,12 @@ function BobaShop(props) {
         console.log(err);
       });
   }
-  
 
   return (
     <li className={classes.shop}>
       <Card>
         <div className={classes.row}>
-          {isMaxFavorite? (
+          {isMaxFavorite ? (
             <div className={classes.crown}>
               <FontAwesomeIcon icon={faCrown} />
             </div>
@@ -68,17 +76,22 @@ function BobaShop(props) {
               </div>
             </div>
             <div className={classes.bobaTeaName}>{props.bobaTeaName}</div>
-            <address className={classes.address}>
+            <a
+              className={classes.address}
+              href={address}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FontAwesomeIcon
                 className={classes.addressIcon}
                 icon={faLocationDot}
               />
               {props.address}
-            </address>
+            </a>
             <BobaDescription description={props.description[0]} />
           </div>
         </div>
-        <BobaShopInfoBtn id={props.id}/>
+        <BobaShopInfoBtn id={props.id} />
       </Card>
     </li>
   );
