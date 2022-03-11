@@ -8,26 +8,31 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function BobaShopInfo(props) {
   const descriptionRef = useRef();
-  const shopInfo = { ...props };
   let address = `https://maps.google.com/?q=${encodeURIComponent(
     props.address
   )}`;
+  console.log(props)
 
   function submitHandler(event) {
     event.preventDefault();
     const inputedDescription = descriptionRef.current.value.trim();
     if (inputedDescription.length===0) return 
     const NewDescription = props.description.concat(inputedDescription);
-    shopInfo.description = NewDescription;
-    console.log(shopInfo)
+    
     axios
-      .get(`${process.env.REACT_APP_FIREBASEAPI_URL}/${props.id}/favorite.json`)
-      .then((res) => {
-        shopInfo.favorite = res.data;
-        props.onAddDescription(shopInfo);
-        descriptionRef.current.value = "";
+      .put(
+        `${process.env.REACT_APP_FIREBASEAPI_URL}/${props.id}/description.json`,
+        NewDescription
+      )
+      .then(()=> {
+        descriptionRef.current.value=''
+        props.fresh()
+        alert('Thank you for ahering your review :)')
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        alert(err);
+      });
+
   }
 
   return (
@@ -70,9 +75,11 @@ function BobaShopInfo(props) {
           </div>
         </form>
       </Card>
-
-      {props.description.map((des, index) => {
-        if (des === null) return;
+     
+      {
+      props.description.map((des, index) => {
+          console.log(des)
+        if (!des) return false;
         return (
           <Card key={index}>
             <BobaDescription description={des} key={index} />

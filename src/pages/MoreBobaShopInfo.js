@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import BobaShopInfo from "../component/shops/BobaShopInfo";
@@ -7,31 +7,18 @@ function MoreBobaShopInfo() {
   const [loadedInfo, setLoadedInfo] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const params = useParams();
+  const navigate = useNavigate()
   
   useEffect(() => {
     setIsLoading(true);
     getData();
   }, []);
 
-  function AddDescription(shopData){
-    axios
-      .put(
-        `${process.env.REACT_APP_FIREBASEAPI_URL}/${shopData.id}.json`,
-        shopData
-      )
-      .then(()=> {
-        getData()
-        alert('Add a review :)')
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
   function getData() {
     axios
       .get(`${process.env.REACT_APP_FIREBASEAPI_URL}/${params.shopId}.json`)
       .then((res) => {
+        if(res.data===null) return navigate('/')
         setLoadedInfo({...res.data});
         setIsLoading(false);
       })
@@ -57,7 +44,7 @@ function MoreBobaShopInfo() {
         address={loadedInfo.address}
         description={loadedInfo.description}
         favorite = {loadedInfo.favorite}
-        onAddDescription = {AddDescription}
+        fresh={getData}
       />
     </section>
   );
