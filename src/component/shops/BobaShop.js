@@ -19,7 +19,7 @@ function BobaShop(props) {
     props.id
   );
   let address = `https://maps.google.com/?q=${encodeURIComponent(
-    props.address
+    props.shopName+' '+props.address
   )}`;
 
   useEffect(() => {

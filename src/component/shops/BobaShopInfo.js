@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function BobaShopInfo(props) {
   const descriptionRef = useRef();
   let address = `https://maps.google.com/?q=${encodeURIComponent(
-    props.address
+    props.shopName+' '+props.address
   )}`;
 
   function submitHandler(event) {
