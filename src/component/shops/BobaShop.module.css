@@ -87,6 +87,13 @@
 .address {
   font-size: 1rem;
   padding: 0.4rem 0;
+  text-decoration: none;
+  color: black;
+  transition: font-weight .1s;
+}
+.address:hover{
+  text-decoration: underline;
+  font-weight: 600;
 }
 .addressIcon {
   padding-right: 0.4rem;

@@ -30,7 +30,7 @@ function AllBobaShopsPage() {
   if (isLoading) {
     return (
       <section>
-        <h1>All Boba Shops</h1>
+        <h1 style={{textAlign:'center'}}>All Boba Shops</h1>
         <p>Loading...</p>
       </section>
     );
