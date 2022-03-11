@@ -14,7 +14,6 @@ import BobaShopInfoBtn from "./BobaShopInfoBtn";
 
 function BobaShop(props) {
   const [favoriteNumber, setfavoriteNumber] = useState(props.favorite);
-  const shopChange = { ...props };
   const PopularBobaShopContext = useContext(PopularBobaShop);
   const isMaxFavorite = PopularBobaShopContext.isMaxFavoriteShopHandler(
     props.id
@@ -31,19 +30,27 @@ function BobaShop(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function favoriteNum(count) {
-    shopChange.favorite = count + 1;
+  function favoriteNum(favoriteNum) {
+    let shopFavorite = favoriteNum + 1;
     setfavoriteNumber((prev) => prev + 1);
     PopularBobaShopContext.addFavoriteShopHandler({
-      [props.id]: shopChange.favorite,
+      [props.id]: shopFavorite,
     });
-    PopularBobaShopContext.findMaxFavoriteNumberHandler(shopChange.favorite);
+    PopularBobaShopContext.findMaxFavoriteNumberHandler(shopFavorite);
 
     axios
-      .put(
-        `${process.env.REACT_APP_FIREBASEAPI_URL}/${props.id}.json`,
-        shopChange
-      )
+      .get(`${process.env.REACT_APP_FIREBASEAPI_URL}/${props.id}/favorite.json`)
+      .then((res) => {
+        let favorite = res.data + 1;
+        axios
+          .put(
+            `${process.env.REACT_APP_FIREBASEAPI_URL}/${props.id}/favorite.json`,
+            favorite
+          )
+          .catch((err) => {
+            console.log(err);
+          });
+      })
       .catch((err) => {
         console.log(err);
       });

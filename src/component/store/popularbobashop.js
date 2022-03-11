@@ -15,7 +15,6 @@ export function PopularBobaShopProvider(props) {
   const [favoriteShop, setFavoriteShop] = useState({});
 
   function addFavoriteShopHandler(ShopIdfavorite) {
-
     setFavoriteShop((preFavorites) => {
       return Object.assign(preFavorites, ShopIdfavorite);
     });
