@@ -9,9 +9,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function BobaShopInfo(props) {
   const descriptionRef = useRef();
   let address = `https://maps.google.com/?q=${encodeURIComponent(
-    props.address
+    props.shopName+' '+props.address
   )}`;
-  console.log(props)
 
   function submitHandler(event) {
     event.preventDefault();
@@ -78,7 +77,6 @@ function BobaShopInfo(props) {
      
       {
       props.description.map((des, index) => {
-          console.log(des)
         if (!des) return false;
         return (
           <Card key={index}>

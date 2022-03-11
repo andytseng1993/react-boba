@@ -4,29 +4,25 @@ import classes from "./Navigation.module.css";
 function Navigation() {
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>Best Boba Milk Tea</div>
+      <div className={classes.logo}>
+        <NavLink
+          to="/"
+        >
+          Best Boba Milk Tea
+        </NavLink>
+      </div>
       <nav>
         <NavLink
-          style={({ isActive }) =>
-            isActive
-              ? {
-                  backgroundColor: "rgb(222, 166, 85)",
-                  color: "rgb(121, 30, 30)",
-                }
-              : { color: "rgb(105, 86, 74)" }
+          className={({ isActive }) =>
+            isActive ? classes.isactive : classes.inactive
           }
           to="/"
         >
           All BobaShops
         </NavLink>
         <NavLink
-          style={({ isActive }) =>
-            isActive
-              ? {
-                  backgroundColor: "rgb(222, 166, 85)",
-                  color: "rgb(121, 30, 30)",
-                }
-              : { color: "rgb(105, 86, 74)" }
+          className={({ isActive }) =>
+            isActive ? classes.isactive : classes.inactive
           }
           to="/newbobashop"
         >

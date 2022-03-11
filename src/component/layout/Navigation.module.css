@@ -7,12 +7,13 @@
   justify-content: space-between;
   padding: 0 10%;
 }
-.logo {
+.header .logo a{
   font-size: 2rem;
   color: black;
   font-weight: bold;
+  text-decoration: none;
 }
-.header a {
+nav a {
   text-decoration: none;
   font-size: 1.2rem;
   color: #3c1e1d;
@@ -22,9 +23,15 @@
   padding: 0.4rem 0.7rem;
   border-radius: 5px;
 }
-.header a:hover,
-.header a:active,
-.header a.active {
-  color: white;
+nav a:hover,
+nav a:active,
+nav a.active {
+  color: rgb(0, 0, 0);
 }
-
+nav .isactive {
+  background-color: rgb(222, 166, 85);
+  color: rgb(121, 30, 30);
+}
+nav .inactive{
+  color: rgb(105, 86, 74);
+}
